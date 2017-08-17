@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>彩色烟花</title>
+    <script type="text/javascript" src="js/sportFrame01.js"></script>
+    <script>
+        window.onload=function(){
+            for(var i=0;i<50;i++)//首先，创立50个新节点，并将其插入到body里边，后边对这新节点进行操作
+            {
+                var aDiv=document.createElement('div');
+                document.body.appendChild(aDiv);
+            }
+            var aDiv=document.getElementsByTagName('div');
+            document.onclick=function(ev){//document是给整个页面加点击事件
+                var oEvent=ev||event;
+                for(var i=0;i<aDiv.length;i++)
+                {
+                    aDiv[i].style.background= '#'+Math.floor(Math.random( ) * 16777215).toString(16);//REG值
+                    sportFrame(aDiv[i],{top:oEvent.clientY,left:oEvent.clientX},function(){
+                    for(var j=0;j<aDiv.length;j++)
+                    {
+                        sportFrame(aDiv[j],{top:Math.random()*600,left:Math.random()*1600,width:0,height:0});
+                    }
+                });
+                    cssStyle(aDiv[i],'width',20);
+                    cssStyle(aDiv[i],'height',20);
+                    cssStyle(aDiv[i],'left',700);
+                    cssStyle(aDiv[i],'top',600);
+                }
+
+            }
+        }
+    </script>
+    <style>
+        *{
+            margin: 0;
+            border:0;
+            padding:0;
+        }
+        body{
+            background: darkslateblue;
+        }
+        div{
+            height:20px;
+            width: 20px;
+            border-radius: 20px;
+            background: gold;
+            position: absolute;
+            left: 600px;
+            top: 700px;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
